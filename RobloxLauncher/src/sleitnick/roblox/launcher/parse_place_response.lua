@@ -5,9 +5,6 @@
 -- Is given the global variable 'httpResponse' which is a string
 
 
--- See if the place is a Personal Server or not:
-local isPersonalServer = (httpResponse:find("VisitButton VisitButtonPersonalServer") ~= nil)
-
 
 -- Get PlaceID from the Play button (which assumes non-place assets will NOT have the button):
 local placeId = (
