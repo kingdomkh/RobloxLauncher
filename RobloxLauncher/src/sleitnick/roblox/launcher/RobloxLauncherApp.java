@@ -146,6 +146,7 @@ public class RobloxLauncherApp implements ActionListener {
 					gameCreator.setText("");
 					gameImage.setIcon(null);
 					launchButton.setVisible(false);
+					launchBrowserButton.setVisible(false);
 				}
 				launchButton.setEnabled(true);
 			}
@@ -171,12 +172,14 @@ public class RobloxLauncherApp implements ActionListener {
 					}
 					DataStoreService.set(ID_INPUT_KEY, id);
 					launchButton.setVisible(true);
+					launchBrowserButton.setVisible(true);
 					frame.pack();
 				} catch (RobloxPlaceException e1) {
-					gameTitle.setText("Invalid place ID");
+					gameTitle.setText(e1.getFailedToConnect() ? "Cannot connect to ROBLOX" : "Invalid place ID");
 					gameCreator.setText("");
 					gameImage.setIcon(null);
 					launchButton.setVisible(false);
+					launchBrowserButton.setVisible(false);
 				} finally {
 					frame.getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 					idField.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));

@@ -36,6 +36,9 @@ public class RobloxPlace implements Serializable {
 		} catch (URISyntaxException e1) {
 		}
 		String response = HttpService.get(url, true);
+		if (response.isEmpty()) {
+			throw new RobloxPlaceException("Failed to connect to ROBLOX", placeId, true);
+		}
 		LuaScript parseResponse = new LuaScript("parse_place_response.lua");
 		LuaValue luaResponse = parseResponse.execute(response);
 		if (luaResponse == LuaValue.FALSE) {

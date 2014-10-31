@@ -48,6 +48,7 @@ public final class RobloxLauncher {
 			frame.setVisible(true);
 		} else {
 			System.out.println("Join request failed");
+			System.out.println(joinRequest);
 		}
 		
 	}
