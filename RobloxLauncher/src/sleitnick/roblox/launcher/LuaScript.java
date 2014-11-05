@@ -3,7 +3,6 @@ package sleitnick.roblox.launcher;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.List;
 
 import org.luaj.vm2.Globals;
 import org.luaj.vm2.LuaValue;
