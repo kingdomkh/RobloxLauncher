@@ -24,6 +24,7 @@ end
 local placeName = httpResponse:match([[<h1 class="notranslate">(.-)</h1>]])
 local placeCreatorId, placeCreatorName = httpResponse:match([[<a href="/User%.aspx%?ID=(.-)" class="tooltip" original%-title=".-">(.-)</a>]])
 
+-- Get place thumbnail:
 local placeThumbnail = httpResponse:match([[<img src="(.-)" height="280" width="500"]])
 
 -- Perhaps Video was shown first, so search for gallery image:
