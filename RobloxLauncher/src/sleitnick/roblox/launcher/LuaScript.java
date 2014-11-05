@@ -2,6 +2,8 @@ package sleitnick.roblox.launcher;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.luaj.vm2.Globals;
 import org.luaj.vm2.LuaValue;
@@ -10,6 +12,14 @@ import org.luaj.vm2.lib.jse.JsePlatform;
 
 
 public class LuaScript {
+	
+	private static final ArrayList<String> LUA_VALID_EXT = new ArrayList<String>() {
+		private static final long serialVersionUID = 1L;
+		{
+			this.add(".lua");
+			this.add(".txt");
+		}
+	};
 	
 	private static String getSourceFromStream(InputStream stream) throws IOException {
 		StringBuilder sb = new StringBuilder();
@@ -22,7 +32,26 @@ public class LuaScript {
 	
 	private String source;
 	
+	private boolean isValidName(String name) {
+		name = name.toLowerCase();
+		for (String ext : LUA_VALID_EXT) {
+			if (name.endsWith(ext.toLowerCase())) {
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	/**
+	 * Create a Lua script from the given name
+	 * <p>
+	 * Will search the class for the given file
+	 * @param name Script name
+	 */
 	public LuaScript(String name) {
+		if (!isValidName(name)) {
+			throw new LuaFileException("Wrong Lua file type");
+		}
 		InputStream stream = getClass().getResourceAsStream(name);
 		try {
 			String source = getSourceFromStream(stream);

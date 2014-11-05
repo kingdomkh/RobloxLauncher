@@ -12,6 +12,12 @@ public final class HttpService {
 	
 	private static final Map<String, String> RESPONSE_CACHE = new HashMap<String, String>();
 	
+	/**
+	 * Get the HTTP response from the given URL.
+	 * @param urlStr {@link String} URL
+	 * @param cacheResponse Whether or not to cache the response
+	 * @return {@link String} response
+	 */
 	public static final String get(String urlStr, boolean cacheResponse) {
 		if (cacheResponse) {
 			String fromCache = RESPONSE_CACHE.get(urlStr);

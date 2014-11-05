@@ -11,10 +11,18 @@ public final class Browser {
 	
 	private static final Desktop DESKTOP = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
 	
+	/**
+	 * Check if Browser support is available
+	 * @return isSupported
+	 */
 	public static boolean isSupported() {
 		return DESKTOP.isSupported(Desktop.Action.BROWSE);
 	}
 	
+	/**
+	 * Browse to the given URI
+	 * @param uri {@link URI}
+	 */
 	public static void browse(URI uri) {
 		try {
 			DESKTOP.browse(uri);
@@ -23,6 +31,10 @@ public final class Browser {
 		}
 	}
 	
+	/**
+	 * Browse to the given URL
+	 * @param url {@link URL}
+	 */
 	public static void browse(URL url) {
 		try {
 			browse(url.toURI());
@@ -31,6 +43,10 @@ public final class Browser {
 		}
 	}
 	
+	/**
+	 * Browse to the given URL
+	 * @param url {@link String} URL
+	 */
 	public static void browse(String url) {
 		try {
 			browse(new URL(url));

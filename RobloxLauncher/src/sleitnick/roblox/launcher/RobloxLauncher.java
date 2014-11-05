@@ -21,11 +21,20 @@ public final class RobloxLauncher {
 	private static final File RBX_DIR = new File(LOCAL_APP_DATA, "Roblox/Versions/" + robloxVersion);
 	
 	
+	/**
+	 * Current version installed
+	 * @return <code>true</code> if current version is installed
+	 */
 	public static boolean hasCurrentVersion() {
 		return RBX_DIR.exists();
 	}
 	
-	
+	/**
+	 * Launch the given place
+	 * @param place Place to launch
+	 * @param frame Frame to launch from
+	 * @throws RobloxVersionException
+	 */
 	protected static void launch(RobloxPlace place, Frame frame) throws RobloxVersionException {
 		
 		if (!hasCurrentVersion()) {

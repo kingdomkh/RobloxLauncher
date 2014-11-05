@@ -46,14 +46,27 @@ public final class DataStoreService {
 		}
 	}
 	
+	/**
+	 * Set a value in the data store
+	 * @param key {@link String} key
+	 * @param value Value
+	 */
 	protected static void set(String key, Object value) {
 		data.data.put(key, value);
 	}
 	
+	/**
+	 * Get value from given key
+	 * @param key {@link String} key
+	 * @return {@link Object} Value
+	 */
 	protected static Object get(String key) {
 		return data.data.get(key);
 	}
 	
+	/**
+	 * Save the data in the data store
+	 */
 	protected static void save() {
 		File dataDir = new File(DATA_DIR_NAME);
 		if (!dataDir.isDirectory()) {
